@@ -1,6 +1,4 @@
  #include "../../include/core/Window.hpp"
-#include <stdexcept>
-#include <iostream>
 
 Window::Window(int width, int height, const char* title){
 
@@ -23,7 +21,6 @@ Window::Window(int width, int height, const char* title){
         throw std::runtime_error("Window Creation Failed");
     }
 
-    glfwMakeContextCurrent(window);
     glfwSetWindowUserPointer(window,this);
     glfwGetFramebufferSize(window,&framebufferwidth,&framebufferheight);
     glfwSetFramebufferSizeCallback(window,framebufferSizeCallback);
@@ -46,6 +43,10 @@ void Window::framebufferSizeCallback(GLFWwindow* window, int w, int h ){
     self->framebufferheight = h;
     std::cout<<"Frame buffer Modified\n";
     
+}
+void Window::makeContextCurrent()const{
+
+    glfwMakeContextCurrent(window);
 }
 int Window::getbufferwidth()const{
 
