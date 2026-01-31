@@ -1,12 +1,13 @@
 #pragma once
+#include "../view/Renderer.hpp"
 #include "Window.hpp"
-
 class Application
 {
 private:
     Window gamewindow;
-    // void processinput();
-    // void update(); 
+    Renderer renderer;
+    void processinput();
+    void update(); 
 
 public:
     Application();

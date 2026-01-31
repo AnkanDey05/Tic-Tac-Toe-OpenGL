@@ -7,12 +7,15 @@ Window::Window(int width, int height, const char* title){
         glfwTerminate();
         throw std::runtime_error("Failed to init GLFW");
     }
+    
+    // Version and OpenGL Profile: 
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,3);
     glfwWindowHint(GLFW_OPENGL_PROFILE,GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,GL_TRUE);
 
+    //Window
 
     window = glfwCreateWindow(width,height,title,NULL,NULL);
     if (!window)
@@ -21,7 +24,7 @@ Window::Window(int width, int height, const char* title){
         throw std::runtime_error("Window Creation Failed");
     }
 
-    glfwSetWindowUserPointer(window,this);
+    glfwSetWindowUserPointer(window,this); //This stores the current window object to a pointer
     glfwGetFramebufferSize(window,&framebufferwidth,&framebufferheight);
     glfwSetFramebufferSizeCallback(window,framebufferSizeCallback);
 }
@@ -33,8 +36,15 @@ Window::~Window(){
 }
 
 void Window::framebufferSizeCallback(GLFWwindow* window, int w, int h ){
+    
+    //assigning the previously stored pointer to self
+    /* 
+    because glfw is written in c language the window object cannot hold a function 
+    so to get the window object we are working on we have to pass that through a pointer and reassign them to a variable,
+    in this case self, only after that we can use it to modify or in this case get the buffersize
+    */
 
-    auto* self = static_cast<Window*>(glfwGetWindowUserPointer(window));
+    auto* self = static_cast<Window*>(glfwGetWindowUserPointer(window)); 
     if (!self)
     {
         return;
