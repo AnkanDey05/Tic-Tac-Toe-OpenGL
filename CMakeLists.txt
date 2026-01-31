@@ -49,7 +49,7 @@ target_link_libraries(TicTacToe_OpenGL
 )
 
 # ===============================
-# Windows: Copy GLEW DLL next to exe
+# Copy GLEW DLL next to exe
 # ===============================
 if (WIN32)
     add_custom_command(TARGET TicTacToe_OpenGL POST_BUILD
