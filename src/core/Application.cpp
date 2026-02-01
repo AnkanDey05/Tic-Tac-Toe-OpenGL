@@ -16,7 +16,7 @@ void Application::run() {
     while (!gamewindow.shouldClose())
     {
         gamewindow.handelEvents();
-        renderer.clearColor(Color::FromRGB(20,51,120));
+        renderer.clearColor(Color::FromRGB(120,51,120));
         gamewindow.swapbuffers();
     }
     

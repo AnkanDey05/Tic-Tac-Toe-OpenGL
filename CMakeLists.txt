@@ -36,20 +36,22 @@ target_include_directories(TicTacToe_OpenGL
 )
 
 # ===============================
-# Dependencies (GLFW + GLEW)
+# Dependencies (GLFW + GLEW + GLM)
 # ===============================
 find_package(glfw3 CONFIG REQUIRED)
 find_package(GLEW REQUIRED)
+find_package(glm CONFIG REQUIRED)
 
 target_link_libraries(TicTacToe_OpenGL
     PRIVATE
         glfw
         GLEW::GLEW
+        glm::glm
         opengl32
 )
 
 # ===============================
-# Copy GLEW DLL next to exe
+# Copy GLEW DLL next to exe (Windows)
 # ===============================
 if (WIN32)
     add_custom_command(TARGET TicTacToe_OpenGL POST_BUILD
