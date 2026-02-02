@@ -10,7 +10,7 @@ void Application::run() {
 
     gamewindow.makeContextCurrent();
     
-    renderer.init();
+    renderer.init(gamewindow.getbufferwidth(),gamewindow.getbufferheight());
     renderer.updateViewport(gamewindow.getbufferwidth(),gamewindow.getbufferheight());
 
     while (!gamewindow.shouldClose())

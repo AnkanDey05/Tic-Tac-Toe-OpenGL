@@ -2,7 +2,7 @@
 #include "../../include/view/Renderer.hpp"
 #include <stdexcept>
 
-void Renderer::init(){
+void Renderer::init(int width, int height){
 
     glewExperimental= GL_TRUE;
 
@@ -10,6 +10,13 @@ void Renderer::init(){
     {
         throw std::runtime_error("[Error]: Glew failed To initialize");
     }
+    used_shader.compilefromSource("../../assets/Shaders/vShader.glsl","../../assets/Shaders/fShader.glsl");
+    projection = glm::ortho(
+        0.0f,
+        (float)width,
+        (float)height,
+        0.0f
+    );
     
 
 }
