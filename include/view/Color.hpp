@@ -9,7 +9,7 @@ class Color
     float a;
     
     
-    constexpr Color(float r,float g,float b,float a = 1.0f): r(r),g(g),b(b),a(a){};
+    constexpr Color(float _r=255,float _g=255,float _b=255,float _a= 1.0f): r(_r),g(_g),b(_b),a(_a){};
 
 public:
  
