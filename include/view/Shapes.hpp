@@ -2,12 +2,14 @@
 #include <vector>
 #include "Color.hpp"
 
-struct Vertex2D {
+struct Vertex2D
+{
     float x;
     float y;
 };
 
-class Quad {
+class Quad
+{
 private:
     int x, y;
     int width, height;
@@ -15,9 +17,8 @@ private:
     std::vector<Vertex2D> vertices;
     std::vector<unsigned int> indices;
 
-    Color color = Color::White;
-
 public:
+    Color color = Color::White;
     Quad(int x, int y, int width, int height, Color color = Color::White)
         : x(x), y(y), width(width), height(height), color(color)
     {
@@ -27,19 +28,18 @@ public:
         float hf = static_cast<float>(height);
 
         vertices = {
-            {xf,       yf},        // Top-left
-            {xf + wf,  yf},        // Top-right
-            {xf + wf,  yf + hf},   // Bottom-right
-            {xf,       yf + hf}    // Bottom-left
+            {xf, yf},           // Top-left
+            {xf + wf, yf},      // Top-right
+            {xf + wf, yf + hf}, // Bottom-right
+            {xf, yf + hf}       // Bottom-left
         };
 
         indices = {
             0, 1, 2,
-            2, 3, 0
-        };
+            2, 3, 0};
     }
 
-    const std::vector<Vertex2D>& getVertices() const { return vertices; }
-    const std::vector<unsigned int>& getIndices() const { return indices; }
-    const Color& getColor() const { return color; }
+    const std::vector<Vertex2D> &getVertices() const { return vertices; }
+    const std::vector<unsigned int> &getIndices() const { return indices; }
+    const Color &getColor() const { return color; }
 };

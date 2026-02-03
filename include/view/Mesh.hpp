@@ -34,7 +34,6 @@ public:
 
         glEnableVertexAttribArray(0);
 
-        // Vertex2D contains only x,y (two floats). Use 2 components and offset 0.
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)0);
          
         // unbinding the vertex array 

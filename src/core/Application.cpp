@@ -14,16 +14,18 @@ void Application::run() {
     renderer.updateViewport(gamewindow.getbufferwidth(),gamewindow.getbufferheight());
 
 
-    Quad test(100,110, 150,150, Color::Green);
+    Quad test(100,110, 150,150, Color::Cyan);
     Mesh testmesh(test.getVertices(),test.getIndices());
+
+    glm::vec3 color (0.1f,0.4f,0.5f);
 
     while (!gamewindow.shouldClose())
     {
         gamewindow.handelEvents();
-        renderer.clearColor(Color::FromRGB(120,51,120));
+        renderer.clearColor(Color::ForestGreen);
 
         testmesh.bind();
-        renderer.setFvec3("u_Color", 0.0f, 1.0f,0.0f);
+        renderer.setFvec3("u_Color", test.color.get_r(),test.color.get_g(),test.color.get_b());
         renderer.draw(testmesh);
 
         gamewindow.swapbuffers();
