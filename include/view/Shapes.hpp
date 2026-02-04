@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "Color.hpp"
-
+#include "Texture.hpp"
 struct Vertex2D
 {
     float x;
@@ -42,4 +42,8 @@ public:
     const std::vector<Vertex2D> &getVertices() const { return vertices; }
     const std::vector<unsigned int> &getIndices() const { return indices; }
     const Color &getColor() const { return color; }
+    void setColor(Color &_color) {
+
+        color = _color;
+    }
 };
