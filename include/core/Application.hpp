@@ -2,6 +2,7 @@
 #include "../view/Renderer.hpp"
 #include "../view/Shapes.hpp"
 #include "../view/Mesh.hpp"
+#include "../view/Texture.hpp"
 #include "Window.hpp"
 class Application
 {

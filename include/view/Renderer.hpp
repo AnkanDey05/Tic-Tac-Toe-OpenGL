@@ -9,18 +9,17 @@
 class Renderer
 {
 private:
-    unsigned int VAO,VBO;
-    Shader used_shader;
+    unsigned int VAO, VBO;
     glm::mat4 projection;
 
 public:
-    Renderer()=default;
+    Shader used_shader;
+    Renderer() = default;
     ~Renderer() = default;
     void init(int width, int height);
     void updateViewport(int width, int height);
-    void clearColor(const Color& color);
+    void clearColor(const Color &color);
     void draw(Mesh &mesh);
     void activateShader();
-    void setFvec3(const std::string& name, float value1, float value2, float value3)const;
+    void setFvec3(const std::string &name, float value1, float value2, float value3) const;
 };
-

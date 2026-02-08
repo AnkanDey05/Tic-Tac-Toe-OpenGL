@@ -2,7 +2,7 @@
 #include <GL/glew.h>
 #include <string>
 #include <iostream>
-#include "../../external/stb_image.h"
+#include "../../src/external/stb_image.h"
 
 class Texture
 {
@@ -18,10 +18,11 @@ public:
         if (ID)
             glDeleteTextures(1, &ID);
     }
-
     bool loadFromFile(const std::string& path)
     {
-        stbi_set_flip_vertically_on_load(true);
+        stbi_set_flip_vertically_on_load(false);
+
+        std::cout<<"[Debug::Texture]: Loadig texture from ->"<<path<<"\n";
 
         unsigned char* data = stbi_load(
             path.c_str(),
@@ -33,7 +34,7 @@ public:
 
         if (!data)
         {
-            std::cerr << "Failed to load texture: " << path << "\n";
+            std::cerr << "[Error::Texture]:Failed to load texture: " << path << "\n";
             return false;
         }
 
@@ -43,10 +44,12 @@ public:
         else if (channels == 4) format = GL_RGBA;
         else
         {
-            std::cerr << "Unsupported channel count\n";
+            std::cerr << "[Error::Texture]:Unsupported channel count\n";
             stbi_image_free(data);
             return false;
         }
+
+        std::cout<<"[Debug::Texture]: Loaded Texture ->"<<"\n"<<"Width: "<<width<<"\n"<<"Height: "<<height<<"\n"<<"Channels: "<<channels<<"\n";
 
         glGenTextures(1, &ID);
         glBindTexture(GL_TEXTURE_2D, ID);
@@ -84,5 +87,8 @@ public:
     void unbind() const
     {
         glBindTexture(GL_TEXTURE_2D, 0);
+    }
+    bool isValid(){
+        return ID != 0;
     }
 };

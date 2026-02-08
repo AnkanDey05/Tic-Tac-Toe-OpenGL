@@ -71,7 +71,7 @@ void Renderer::setFvec3(const std::string &name, float value1, float value2, flo
     int pos = glGetUniformLocation(const_cast<Shader &>(used_shader).getID(), name.c_str());
     if (pos == -1)
     {
-        std::cerr << "[Error}: Could not found the unifom\n";
+        //std::cerr << "[Error}: Could not found the unifom\n";
         return;
     }
     else

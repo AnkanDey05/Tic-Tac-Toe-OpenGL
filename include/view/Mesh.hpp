@@ -35,6 +35,9 @@ public:
         glEnableVertexAttribArray(0);
 
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)0);
+        // UV attribute
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (void*)(2 * sizeof(float)));
          
         // unbinding the vertex array 
 

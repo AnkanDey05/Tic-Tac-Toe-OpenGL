@@ -18,4 +18,8 @@ public:
 
     void compilefromSource(const char* vertex_shader_path, const char* fragment_shader_path);
     int getID();
+    void set1i(int value, const char* name ){
+
+        glUniform1i(glGetUniformLocation(ID,name),value);
+    }
 };
